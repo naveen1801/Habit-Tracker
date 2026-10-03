@@ -1,0 +1,7 @@
+node_modules
+.env
+*.log
+*.bak
+
+# User-uploaded files
+habit app/uploads/*

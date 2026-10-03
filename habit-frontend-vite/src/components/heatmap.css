@@ -1,0 +1,31 @@
+.react-calendar-heatmap {
+  width: 100%;
+  max-width: 750px;
+}
+
+/* square size */
+.react-calendar-heatmap rect {
+  width: 10px;
+  height: 10px;
+}
+
+/* spacing between squares */
+.react-calendar-heatmap .react-calendar-heatmap-week {
+  margin-bottom: 2px;
+}
+
+/* text styling */
+.react-calendar-heatmap text {
+  font-size: 9px;
+  fill: #666;
+}
+
+/* colors */
+.color-empty {
+  fill: #ebedf0;
+}
+
+.color-github-1 { fill: #9be9a8; }
+.color-github-2 { fill: #40c463; }
+.color-github-3 { fill: #30a14e; }
+.color-github-4 { fill: #216e39; }
