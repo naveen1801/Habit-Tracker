@@ -1,0 +1,11 @@
+{
+  "name": "habitcanvas",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix habit-frontend-vite install --include=dev && npm --prefix habit-frontend-vite run build && npm --prefix \"habit app\" install",
+    "start": "node \"habit app/server.js\""
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
