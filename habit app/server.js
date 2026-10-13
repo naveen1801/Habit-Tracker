@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: require("path").join(__dirname, ".env") });
 
 const express    = require("express");
 const mongoose   = require("mongoose");
@@ -8,6 +8,7 @@ const cors       = require("cors");
 const nodemailer = require("nodemailer");
 const multer     = require("multer");
 const path       = require("path");
+const fs         = require("fs");
 
 const User            = require("./models/User");
 const Habit           = require("./models/Habit");
@@ -18,8 +19,9 @@ const PomodoroSession = require("./models/PomodoroSession");
 const CommunityPost   = require("./models/CommunityPost");
 
 // ─── Multer ────────────────────────────────────────────────
+fs.mkdirSync(path.join(__dirname, "uploads"), { recursive: true });
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
+  destination: (req, file, cb) => cb(null, path.join(__dirname, "uploads")),
   filename:    (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
 });
 const upload = multer({ storage });
@@ -39,7 +41,7 @@ const frontendDist = path.join(__dirname, "..", "habit-frontend-vite", "dist");
 
 app.use(cors());
 app.use(express.json());
-app.use("/uploads", express.static("uploads"));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.static(frontendDist));
 
 // ─── DB ───────────────────────────────────────────────────
